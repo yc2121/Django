@@ -1,0 +1,13 @@
+form {
+  width: 30%;
+  position: relative;
+  padding-top: 50px;
+}
+label {
+  display: block;
+  margin: 5px;
+}
+input {
+  position: absolute;
+  right: 0;
+}
