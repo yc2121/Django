@@ -31,9 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-`   'apps.blog',
+   'apps.blog',
     'apps.time_display',
-`    'django.contrib.admin',
+    'apps.ninja_gold',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
