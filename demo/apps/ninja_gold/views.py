@@ -8,7 +8,7 @@ def index(request):
   # print "*"*10,' Start digging....'
   if 'yourgold' not in request.session:
     request.session['yourgold']=0
-  if 'yourgold' not in request.session:
+  if 'activities' not in request.session:
     request.session['activities']=[]
   if request.method=='POST':
     # print request.POST
@@ -24,7 +24,7 @@ def index(request):
 
 def farm(request):
   x=random.randrange(10,21)
-  t="Earned {} golds from the Cave! ({})".format(str(x),str(datetime.datetime.now()))
+  t="Earned {} golds from the Farm! ({})".format(str(x),str(datetime.datetime.now()))
   print '******* ',t
   request.session['activities']+=[t]
   return redirect('/')
