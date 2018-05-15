@@ -6,9 +6,10 @@ from models import *
 from time import gmtime, strftime
 
 def index(request):
+  print '\n******* IN INDEX'
   context = {
-    "date": strftime("%M-%D-%d %H:%M %p", gmtime()),
-    "time": strftime("%Y-%m-%d %H:%M %p", gmtime())
+    'date': strftime('%b %d, %Y'),
+    'time': strftime('%I:%M:%S %p')
   }
   return render(request,'time_display/index.html', context)
 

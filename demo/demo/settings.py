@@ -34,6 +34,7 @@ INSTALLED_APPS = [
    'apps.blog',
     'apps.time_display',
     'apps.ninja_gold',
+    'apps.random_word',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

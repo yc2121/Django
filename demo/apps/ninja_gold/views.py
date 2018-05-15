@@ -1,22 +1,17 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
-# from time import gettime, strftime
-# from django.utils.crypte import get_random_string
 
 from models import *
 import os, random, datetime
 
-# def index(request):
-#   response = "Hello, from INDEX!"
-#   return HttpResponse(response)
-
 def index(request):
-  print "*"*10,' Start digging....'
-  if not 'yourgold' in request.session:
+  # print "*"*10,' Start digging....'
+  if 'yourgold' not in request.session:
     request.session['yourgold']=0
+  if 'yourgold' not in request.session:
     request.session['activities']=[]
   if request.method=='POST':
-    print request.POST
+    # print request.POST
     if request.POST['loc']=='farm':
       return redirect('/farm')
     elif request.POST['loc']=='cove':
@@ -28,9 +23,10 @@ def index(request):
   return render(request, "ninja_gold/index.html")
 
 def farm(request):
-  x=random.randrange(10,21); request.session['yourgold']+=x
-  request.session['activities']+='Earned '+str(x)+ \
-    ' golds from the Cave! ('+str(datetime.datetime.now())+')'
+  x=random.randrange(10,21)
+  t="Earned {} golds from the Cave! ({})".format(str(x),str(datetime.datetime.now()))
+  print '******* ',t
+  request.session['activities']+=[t]
   return redirect('/')
 
 def cove(request):

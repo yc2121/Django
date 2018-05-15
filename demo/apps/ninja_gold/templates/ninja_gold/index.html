@@ -10,41 +10,31 @@
     </head>
   <body>
       <h1>Start your digging, ninjas!</h1>
-      <p>Your Gold: <input type='textbox' name='yourgold'>{{request.session.yourgold}}</p>
-      <div>
-        <form action="/" method="post">
-          {% csrf_token %}
+      <p>Your Gold: <input type='textbox' name='yourgold' value='{{request.session.yourgold}}'></p>
+      <form action="/" method="post">
         {% csrf_token %}
-          <h2>Farm</h2>
-          <h4>(earns 10-20 golds)</h4>
-          <button type='submit' type='hidden' name='loc' value='farm'>Find Gold!</button>
-        </form>
-      </div>
-      <div>
-        <form action="/" method="post">
-          {% csrf_token %}
-          <h2>Cove</h2>
-          <h4>(earns 5-10 golds)</h4>
-          <button type='submit' type='hidden' name='loc' value='cove'>Find Gold!</button>
-        </form>
-    </div>
-      <div>
-        <form action="/" method="post">
-          {% csrf_token %}
-          <h2>House</h2>
-          <h4>(earns 2-5 golds)</h4>
-          <button type='submit' type='hidden' name='loc' value='house'>Find Gold!</button>
-        </form>
-    </div>
-      <div>
-        <form action="/" method="post">
-          {% csrf_token %}
-          <h2>Casino</h2>
-          <h4>(earns/takes 0-50 golds)</h4>
-          <button type='submit' type='hidden' name='loc' value='casino'>Find Gold!</button>
-        </form>
-      </div>
-      <textarea rows=5 cols=97 name='activities'>{{request.session.activities}}</textarea>
-    </form>
+        <h2>Farm</h2>
+        <h4>(earns 10-20 golds)</h4>
+        <button type='submit' type='hidden' name='loc' value='farm'>Find Gold!</button>
+      </form>
+      <form action="/" method="post">
+        {% csrf_token %}
+        <h2>Cove</h2>
+        <h4>(earns 5-10 golds)</h4>
+        <button type='submit' type='hidden' name='loc' value='cove'>Find Gold!</button>
+      </form>
+      <form action="/" method="post">
+        {% csrf_token %}
+        <h2>House</h2>
+        <h4>(earns 2-5 golds)</h4>
+        <button type='submit' type='hidden' name='loc' value='house'>Find Gold!</button>
+      </form>
+      <form action="/" method="post">
+        {% csrf_token %}
+        <h2>Casino</h2>
+        <h4>(earns/takes 0-50 golds)</h4>
+        <button type='submit' type='hidden' name='loc' value='casino'>Find Gold!</button>
+      </form>
+      <textarea rows=5 cols=102 name='activities'>{{request.session.activities}}</textarea>
   </body>
 </html>
