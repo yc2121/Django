@@ -17,10 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^', include('apps.ninja_gold.urls')),
+    url(r'^', include('apps.crud.urls')),
     url(r'^blog', include('apps.blog.urls')),
-    url(r'^time_display', include('apps.time_display.urls')),
+    url(r'^books', include('apps.books.urls')),
+    url(r'^crud', include('apps.crud.urls')),
     url(r'^ninja_gold', include('apps.ninja_gold.urls')),
     url(r'^random_word', include('apps.random_word.urls')),
+    url(r'^time_display', include('apps.time_display.urls')),
     url(r'^admin/', admin.site.urls),
 ]

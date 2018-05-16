@@ -5,7 +5,7 @@ from models import *
 import os, random, datetime
 
 def index(request):
-  # print "*"*10,' Start digging....'
+  print '\n',"*"*10,' NINJA_GOLD (def index)\n'
   if 'yourgold' not in request.session:
     request.session['yourgold']=0
   if 'activities' not in request.session:
