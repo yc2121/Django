@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <title>Dojo Ninjas</title>
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="{% static 'dojo_ninjas/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+    <!-- Put the static files in the static folder inside your app.  Django collects files within all static folders and puts them within a single folder -->    
+    </head>
+  <body>
+    <h1>Dojo List</h1>
+    <ul>
+      {% for dojo in dojos %}
+        <li>{{dojo.name}}
+          <ul>
+            {% for ninja in ninjas %}
+              <li><em></em>{{ninjas.lastname}}, {{ninja.first_name}}</em></li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
