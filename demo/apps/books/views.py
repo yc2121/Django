@@ -8,11 +8,15 @@ def index(request):
   print '\n',"*"*10,' BOOKS (def index)\n'
 
   for author in Author.objects.all():
-    context = {
-      "authors": author,
-      "books": Author.objects.books.all(),   
-    }
-  print '\n', context
+    for theid in author.id:
+      print Book.objects.get(id=str(theid)).authors   
+      context = { 
+        "authors": theid,
+        "books": 'test'
+        }
+
+  # context={}
+  # print '\n', context
   return render(request, "books/index.html", context)
 
   # if 'yourgold' not in request.session:

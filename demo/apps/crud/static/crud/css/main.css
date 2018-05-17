@@ -2,8 +2,12 @@ body {
   margin: 0px auto;
   width: 800px;
 }
+label {
+  display: block;
+  color: teal
+}
 h1 {
-  text-align: center
+  text-align: center;
 }
 form {
   border: 1px solid black;

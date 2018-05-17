@@ -2,18 +2,33 @@
 from __future__ import unicode_literals
 from django.db import models
 
+class User(models.Model):
+  first_name = models.CharField(max_length=255)
+  last_name = models.CharField(max_length=255)
+  email_address = models.CharField(max_length=255)
+  age = models.IntegerField()
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
+
+  def __repr__(self):
+    return '\n( {} {}, {}, {} )'.format(self.first_name,self.last_name,self.email_address,self.age)
+
+  def __str__(self):
+    return 'user( {} {}, {}, {})'.format(self.first_name,self.last_name,self.email_address,self.age)
+
 class Dojo(models.Model):
   name = models.CharField(max_length=255)
   city = models.CharField(max_length=255)
   state = models.CharField(max_length=255)
+  desc = models.TextField()
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
   
   def __repr__(self):
-    return '\n({},{},{})'.format(self.name,self.city,self.state)
+    return '\n( {}, {}, {}, {} )'.format(self.name,self.city,self.state,self.desc)
 
   def __str__(self):
-    return 'dojo(name={},city={},state={})'.format(self.name,self.city,self.state)
+    return 'dojo( name={}, city={}, state={} )'.format(self.name,self.city,self.state)
 	
 class Ninja(models.Model):
   dojo_id = models.ForeignKey(Dojo, related_name="ninjas")
@@ -23,10 +38,10 @@ class Ninja(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
 
   def __repr__(self):
-    return 'ninja ({},{},{})'.format(self.name,self.city,self.state)
+    return '\nninja( {} {}, {} )'.format(self.first_name,self.last_name,self.dojo_id)
 
   def __str__(self):
-    return 'ninja(dojo_id={},first_name={},last_name={})'.format(self.name,self.city,self.state)
+    return '\nninja( {} {}, dojo={} )'.format(self.first_name,self.last_name,self.dojo_id)
 
 # [FIST MIGRATE CHANGES]
 # python manage.py makemigrations
@@ -35,6 +50,19 @@ class Ninja(models.Model):
 # [USE SHELL TO CREATE INITIAL RECORDS]
 # FROM SHELL, i.e. python manage.py shell
 # from apps.dojo_ninjas.models import *
+#
+# User.objects.create(
+#  first_name='Jimi', last_name='Hendrix',
+#  email_address='jmii@acid.com', age='38'
+#  )
+# User.objects.create(
+#  first_name='Johnny', last_name='Dangerous',
+#  email_address='jd@socool.com', age='41'
+#  )
+# User.objects.create(
+#  first_name='Johnny', last_name='Walker',
+#  email_address='johnny@walker.com', age='65'
+#  )
 #
 # Dojo.objects.create(
 #   name='CodingDojo Sillicon Valley', city='Mountain View', state='CA'

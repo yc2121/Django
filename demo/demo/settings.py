@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.books',
     'apps.crud',
+    'apps.login',
     'apps.ninja_gold',
     'apps.random_word',
     'apps.time_display',

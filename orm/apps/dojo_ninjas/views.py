@@ -10,5 +10,5 @@ def index(request):
     "dojos": Dojo.objects.all(),
     "ninjas": Ninja.objects.all()
     }
-  return render(request, "books/index.html", context)
+  return render(request, "dojo_ninjas/index.html", context)
 

@@ -7,7 +7,31 @@ import os, random, datetime
 def index(request):
   print '\n',"*"*10,' CRUD (def index)\n'
 
-  context={}
+  context={
+
+  }
+
+  return render(request, "crud/index.html", context)
+
+def users(request):
+  print '\n',"*"*10,' CRUD (def users)\n'
+
+  context = {
+    'users' : User.objects.all()
+  }
+  print '\n CONTEXT \n',context
+
+  return render(request, "crud/users.html", context)
+
+def users_details(request, userid):
+  print '\n',"*"*10,' CRUD (def users_details)\n'
+  print 'useridD=',userid
+  context = {
+    'user' : User.objects.get(id=userid)
+  }
+  print '\n CONTEXT \n',context
+
+  return render(request, "crud/details.html", context)
 
   # for author in Author.objects.all():
   #   context = {
@@ -15,7 +39,6 @@ def index(request):
   #     "books": Author.books.all(),   
   #   }
   # print '\n', context
-  return render(request, "crud/index.html", context)
 
   # if 'yourgold' not in request.session:
   #   request.session['yourgold']=0
