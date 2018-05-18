@@ -1,26 +1,15 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
-from forms import LoginForm
 
 from models import *
-import os, random, datetime, bcrypt
+import os, random, datetime
 
 def index(request):
-  # print '\n',"*"*10,' CRUD (def index)\n'
-  # if request.method=='POST':
-  #   if request.POST['click']=='register':
-  #     return redirect('/register')
-  #   else:
-  #     request.POST['click']=='login'
-  #     return redirect('/login') 
-  # else:
-  #   return render(request,'crud/index.html')
-  # return render(request,'crud/index.html')
-  return render(request,'crud/index.html')
+  return render(request,'bookreview/index.html')
 
 def register (request):
 
-  print '\n',"*"*10,' CRUD (def register)\n'
+  print '\n',"*"*10,' def register\n'
   errors = User.objects.basic_validator(request.POST,'register')
   print errors
 
@@ -30,36 +19,49 @@ def register (request):
       return redirect('/')
   else:
     u=User.objects.create(
-      first_name = request.POST['first_name'],
-      last_name = request.POST['last_name'],
+      name = request.POST['name'],
+      alias = request.POST['alias'],
       email = request.POST['email'],
       password = bcrypt.hashpw( request.POST['password'].encode(), bcrypt.gensalt() )
       )
     u=User.objects.get(email=request.POST['email'])
     context = u
-    return render(request,'crud/body.html',context)
+    
+  context ={ 'where':'def register'}
 
-def login(request):
-  
-  print '\n',"*"*10,' CRUD (def login)\n'
+  return render(request,'bookreview/body.html',context)
+
+def login(request):  
+  print '\n',"*"*10,' def login\n'
 
   errors = User.objects.basic_validator(request.POST,'login')
 
   if len(errors):
-      for tag, error in errors.iteritems():
-          messages.error(request, error, extra_tags=tag)
-      return redirect('/')
+    for tag, error in errors.iteritems():
+        messages.error(request, error, extra_tags=tag)
+    return redirect('/')
   else:
-      u = User.objects.get(email = request.POST['email'])
-      context = {
-        'first_name':u.first_name,
-        'last_name':u.last_name,
-        'email':u.email,
-      }
-  return render(request, 'crud/body.html', context)
+    context={ 'name':request.POST['email'] }
+    return render(request, 'bookreview/body.html', context)
+
+def books(request):
+  print '\n',"*"*10,' def books\n'
+  return redirect('/books.html')
+
+def add_book_and_review(request):
+  print '\n',"*"*10,' def add_book_and_review\n'
+  return redirect('/book_and_review_form.html')
+
+def review_details(request):
+  print '\n',"*"*10,' def review_details\n'
+  return redirect('/reviews_detail.html')
+
+def user_review(request):
+  print '\n',"*"*10,' def user_review\n'
+  return redirect('/user_review.html')
 
 def users(request):
-  print '\n',"*"*10,' CRUD (def users)\n'
+  print '\n',"*"*10,' def users\n'
   
   if 'activities' not in request.session:
     request.session['activities']=[]
@@ -69,17 +71,17 @@ def users(request):
     if request.POST['submit']=='register':
       return redirect('/register')
     else:
-      return redirect('/crud')
+      return redirect('/bookreview')
 
 def users_details(request, userid):
-  print '\n',"*"*10,' CRUD (def users_details)\n'
+  print '\n',"*"*10,' def users_details\n'
   print 'userid=',userid
   context = {
     'user' : User.objects.get(id=userid)
   }
   print '\n CONTEXT \n',context
 
-  return render(request, "crud/details.html", context)
+  return render(request, "bookreview/details.html", context)
 
 # def update(request):
 #     errors = Blog.objects.basic_validator(request.POST)
@@ -115,6 +117,3 @@ def users_details(request, userid):
   #     return redirect('/house') 
   #   else:
   #     return redirect('/casino') 
-
-
-

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BookReview</title>
+      {% load static %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    {% comment %} <link rel="stylesheet" href="{% static 'crud/css/main.css' %}" media="screen" title="no title"  charset="utf-8"> {% endcomment %}
+    <!-- Put the static files in the static folder inside your app.  Django collects files within all static folders and puts them within a single folder -->    
+    </head>
+  <body>
+    <!-- <p>Your Gold: <input type='textbox' name='yourgold' value='{{request.session.yourgold}}'></p> -->
+    <div class='container'>
+      <div class='row'>
+        <div class='col-4'>
+          <form action="/register" method="post">
+            <h1>Registration</h1>
+            {% csrf_token %}
+            <div class='form-group'>
+              <label>Name: <input type='textbox' name='name' value='Bruce Wayne' class='form-control'></label>
+              <label>Alias: <input type='textbox' name='alias' value='So Cool' class='form-control'></label>
+              <label>email: <input type='textbox' name='email' value='bw@batman.com' class='form-control'></label>
+              <label>Password: <input type='textbox' name='password' value='Bruce Wayne' class='form-control'></label>
+              <label>Confirm PW: <input type='textbox' name='confirmation' value='Bruce Wayne' class='form-control'></label>
+            </div>
+            <button type='submit' name='click' value='register' class="btn btn-outline-primary btn-lg btn-primary">Register</button>
+          </form>
+        </div>
+        <div class='col-4' class="form-group">
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        <div class='col-4'>
+          <form action="/login" method="post">
+            <h1>Login</h1>
+            {% csrf_token %}
+            <div class='form-group'>
+              <label>email: <input type='textbox' name='email' value='bw@batman.com' class='form-control'></label>
+              <label>Password: <input type='textbox' name='password' value='Batman rules!' class='form-control'></label>
+            </div>
+            <button type='submit' name='click' value='login' class="btn btn-outline-primary btn-lg btn-primary">Login</button>
+          </form>   
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
