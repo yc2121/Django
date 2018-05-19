@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+      {% load static %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    {% comment %} <link rel="stylesheet" href="{% static 'bookreview/css/w3.css' %}" media="screen" title="no title"  charset="utf-8"> {% endcomment %}
+    <!-- Put the static files in the static folder inside your app.  Django collects files within all static folders and puts them within a single folder -->    
+  </head>
+<body>
+  <div class='container'>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Add Book and Review</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+  </div>
+<h3>Hello, {{name}}</h3>
+Here's your appointmnets for today, Here
+{{appts}}
+Your Other appointments:
+
+
+
+</body>
+</html>

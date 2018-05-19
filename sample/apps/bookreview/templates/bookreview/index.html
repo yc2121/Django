@@ -6,6 +6,7 @@
       {% load static %}
     <!-- The line above tells Django to be ready to listen for static files -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
     {% comment %} <link rel="stylesheet" href="{% static 'crud/css/main.css' %}" media="screen" title="no title"  charset="utf-8"> {% endcomment %}
     <!-- Put the static files in the static folder inside your app.  Django collects files within all static folders and puts them within a single folder -->    
     </head>
@@ -14,7 +15,7 @@
     <div class='container'>
       <div class='row'>
         <div class='col-4'>
-          <form action="/register" method="post">
+          <form action="/register" method="post" class="border border-primary">
             <h1>Registration</h1>
             {% csrf_token %}
             <div class='form-group'>
