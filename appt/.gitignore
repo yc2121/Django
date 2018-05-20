@@ -1,0 +1,9 @@
+notes.md
+requirements.md
+
+*.pyc
+*~
+__pycache__
+myvenv
+db.sqlite3
+.DS_Store
