@@ -16,7 +16,7 @@ def register (request):
   errors = User.objects.basic_validator(request.POST,'register')
   print errors
 
-  if len(errors):
+  if errors:
       for tag, error in errors.iteritems():
           messages.error(request, error, extra_tags=tag)
       return redirect('/')
