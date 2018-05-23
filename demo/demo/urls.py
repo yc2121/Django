@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^', include('apps.login.urls')),
+    url(r'^', include('apps.random_word.urls')),
     url(r'^blog', include('apps.blog.urls')),
     url(r'^books', include('apps.books.urls')),
     url(r'^crud', include('apps.crud.urls')),

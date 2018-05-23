@@ -1,8 +1,7 @@
 form {
-  width: 350px;
+  width: 30%;
   position: relative;
   padding-top: 50px;
-  margin: 0px auto;
 }
 label {
   display: block;
@@ -11,8 +10,4 @@ label {
 input {
   position: absolute;
   right: 0;
-  
-}
-button {
-  margin: 20px 0px 0px;
 }
