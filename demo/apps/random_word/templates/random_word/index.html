@@ -18,11 +18,11 @@
   </head>
   <body>
     <class='container'>
+      <h3>Random Word (attempt # {{request.session.trials}})</h3>
       <form action="/word/" method="post">
         {% csrf_token %}
-        <h3>Random Word (attempt # {{request.session.trials}})</h3>
-        <textbox type='input' name='textbox' placeholder='{{word}}'></textbox>
-        <button type='submit'>Generate</button>
+        <textbox class='row col-sm-4' type='input'>{{word}}</textbox>
+        <button class='row col-sm-2' type='submit'>Generate</button>
       </form>      
     </class>
   </body>

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.login',
     'apps.ninja_gold',
     'apps.random_word',
+    'apps.survey_form',
     'apps.time_display',
     'django.contrib.admin',
     'django.contrib.auth',
