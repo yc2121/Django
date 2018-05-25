@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Info</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'website/css/bootstrap-custom.css' %}" media="screen" title="no title"  charset="utf-8">
+    <script src="{% static 'website/js/jquery-3.3.1.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script src="{% static 'website/js/popper.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script src="{% static 'website/js/bootstrap.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <link rel="icon" type='image/png' href="{% static 'website/img/favicon.png' %}">
+  </head>
+  <body>
+    <div class='container'>
+      <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <!-- <a class="navbar-brand" href="#">WebSiteName</a> -->
+            </div>
+            <ul class="nav navbar">
+                <li><a class='col-sm-2' href='/user/{{request.session.userID}}/'>Home</a></li>
+                <li><a class='col-sm-2' href='/logout/'>Logout</a></li>
+            </ul>
+          </div>
+      </nav>
+      <div class='row'>
+        <div class='col-sm-6'>
+          <a href="#">User <span class="badge">{{request.session.userID}}</span> - {{name}}</a>
+          <div class='well'></div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>theDate</th>
+                <th>theTime</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- {% for x in y %} -->
+              <!-- {% endfor %} -->
+              <tr>
+                <td><a href='/user/{{request.session.userID}}/'>{{ email }}</a></td>
+                <td>{{ theDate }}</td>
+                <td>{{ theTime }}</td>
+              </tr>
+              <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+              </tr>
+              <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+              </tr>
+            </tbody>
+          </table>                  
+        </div>
+        <div class='col-sm-6' class="form-group">
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="textarea">Small textarea</label>
+          <textarea class="form-control rounded-0 noresize" id="textarea" rows="3"></textarea>
+      </div>
+      <button type="button" class="btn btn-default">Default</button>
+      <button type="button" class="btn btn-link">Link</button>
+    </div>
+  </body>
+</html>
