@@ -14,6 +14,17 @@ testData = {
   'pwdMin': 3,
 }
 
+def getUser(userID):
+  u=User.objects.get(id=userID)
+  return {
+    'id': u.id,
+    'name' : u.name,
+    'email' : u.email,
+    'admin' : u.admin,
+    'theDate' : u.theDate,
+    'theTime' : u.theTime,
+    }
+
 def index(request): 
   print '\n',"*"*10,' def index\n'
   return render(request,'website/index.html', testData)
@@ -25,11 +36,8 @@ def register(request):
   print '***** Validation errors =',errors
   if errors:
     for tag, error in errors.iteritems():
-        messages.error(request, error, extra_tags=tag)
-    if request.session['addUser']:
-      return redirect('/user/add/')
-    else:
-      return redirect('/')
+      messages.error(request, error, extra_tags=tag)
+    return redirect('/')
   else:
     try:
       u=User.objects.create(
@@ -41,6 +49,8 @@ def register(request):
         theTime = request.POST['theTime'],
         )
       request.session['userID']=u.id
+      request.session['ownerName']=u.name
+
       print 'Session established for {}'.format(u)        
       return redirect('/user/{}/'.format(request.session['userID']))
     except:
@@ -72,7 +82,10 @@ def login(request):
       messages.error(request, error, extra_tags=tag)
     return redirect('/')
   else:
-    request.session['userID']=User.objects.get(email=request.POST['email']).id
+    u=User.objects.get(email=request.POST['email'])
+    request.session['userID']=u.id
+    request.session['ownerName']=u.name
+
     print 'Session established for user [{}]'.format(request.session['userID'])
     return redirect('/user/{}/'.format(request.session['userID']))
 
@@ -95,13 +108,16 @@ def info(request, userID):
       'theDate' : u.theDate,
       'theTime' : u.theTime,
       }
+    
+    request.session['infoName']=u.name
+
   except:
     print '------> Error in getting in user object: \n{}'.format(u)
 
   try:
     theRestUsers=[]
     if u.admin:
-      for each in User.objects.exclude(id=request.session['thisUser'])[:3]:
+      for each in User.objects.exclude(id=request.session['thisUser']):
         theRestUsers += [{
           'id': each.id,
           'name' : each.name,
@@ -120,6 +136,33 @@ def info(request, userID):
 
   return render(request,'website/infopage.html',context)
 
-def addUser(request):
-  request.session['addUser']=True
+def add(request):
+  print '\n',"*"*10,' def add\n'
   return render(request,'website/addUser.html', testData)
+
+def addUser(request):
+  print '\n',"*"*10,' def addUser\n'
+  errors = User.objects.basic_validator(request.POST, 'register')
+  print '***** Validation errors =',errors
+  if errors:
+    for tag, error in errors.iteritems():
+      messages.error(request, error, extra_tags=tag)
+    return redirect('/user/add/')
+  else:
+    try:
+      u=User.objects.create(
+        name = request.POST['name'],
+        email = request.POST['email'],
+        password = bcrypt.hashpw( request.POST['password'].encode(), bcrypt.gensalt() ),
+        admin = request.POST['admin'],
+        theDate = request.POST['theDate'],
+        theTime = request.POST['theTime'],
+        )
+      return redirect('/user/{}/'.format(request.session['userID']))
+    except:
+      print '------> Error in creating user object for \n{}'.format(u)
+
+def viewUser(request,userID):
+  context = getUser(userID)
+  return render(request,'website/viewUser.html',context)
+

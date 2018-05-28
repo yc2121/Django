@@ -35,29 +35,36 @@
       </nav>  
       <div class='mt40 row'>
         <div class='col-sm-6'>
-          <h3>Add User</h3>
-          <form action="/register" method="post">
+          <h3>Add/Create</h3>
+          <form action="/addUser/" method="post">
             {% csrf_token %}
             <div class='form-group row'>
               <label class='col-sm-4'>Name:</label> 
-              <input class='col-sm-8' type='textbox' class="form-control" name='name' placeholder='{{user}}' class='form-control'>
+              <input class='col-sm-8' type='textbox' class="form-control" name='name' value='{{user}}' class='form-control'>
             </div>
             <div class='form-group row'>
               <label class='col-sm-4'>email:</label>
-              <input class='col-sm-8' type='textbox' name='email' placeholder='{{email}}' class='form-control'>
+              <input class='col-sm-8' type='textbox' name='email' value='{{email}}' class='form-control'>
             </div>
             <div class='form-group row'>
               <label class='col-sm-4'>Password:</label>
-              <input class='col-sm-8' type='password' name='password' placeholder='{{pwd}}' class='form-control'>
+              <input class='col-sm-8' type='password' name='password' value='{{pwd}}' class='form-control'>
             </div>
             <p>Password at least {{pwdMin}} characters</p>
             <div class='form-group row'>
               <label class='col-sm-4'>Confirmtoin:</label> 
-              <input class='col-sm-8' type='password' name='confirmation' placeholder='{{pwd}}' class='form-control'>
+              <input class='col-sm-8 form-control' type='password' name='confirmation' value='{{pwd}}'>
+            </div>
+            <div class='form-group row'>
+              <label class='col-sm-4' for='admin'>Admin:</label> 
+              <select class='col-sm-8 form-control' id='admin' name='admin'>
+                <option>False</option>
+                <option>True</option>
+              </select>
             </div>
             <div class='form-group row'>
               <label class='col-sm-4'>Date:</label>
-              <input class='col-sm-8'type='date' name='theDate' value='{{theDate}}' class='form-control'>
+              <input class='col-sm-8 form-ccontrol'type='date' name='theDate' value='{{theDate}}'>
             </div>
             <div class='form-group row'>
               <label class='col-sm-4'>Time:</label>

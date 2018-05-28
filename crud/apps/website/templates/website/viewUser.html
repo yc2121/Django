@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View/Display</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'website/css/bootstrap-custom.css' %}" media="screen" title="no title"  charset="utf-8">
+    <script src="{% static 'website/js/jquery-3.3.1.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script src="{% static 'website/js/popper.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script src="{% static 'website/js/bootstrap.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <link rel="icon" type='image/png' href="{% static 'website/img/favicon.png' %}">
+  </head>
+  <body>
+    <div class='container'>
+      <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <!-- <a class="navbar-brand" href="#">WebSiteName</a> -->
+            </div>
+            <ul class="nav navbar">
+                <li><a class='col-sm-2' href='/user/{{request.session.userID}}/'>Home</a></li>
+                <li><a class='col-sm-2' href='/thispage/'>thispage</a></li>
+                <li><a class='col-sm-2' href='/logout/'>Logout</a></li>
+            </ul>
+          </div>
+      </nav>
+      <div class='row'>
+        <!-- User information page -->
+        <div class='col-sm-8 panel panel-default border p-5'>
+            <h3 class='row'>User Information</h3>
+            <div>
+              <label class='col-sm-2'>ID:</label>
+              <label>{{ id }}</label>
+            </div>
+            <div>
+              <label class='col-sm-2'>Name:</label>
+              <label>{{ name }}</label>
+            </div>
+            <div>
+              <label class='col-sm-2'>Email:</label>
+              <label>{{ email }}</label>
+            </div>
+            <div>
+              <label class='col-sm-2'>Admin:</label>
+              <label>{{ admin }}</label>
+            </div>
+            <div>
+              <label class='col-sm-2'>theDate:</label>
+              <label>{{ theDate }}</label>
+            </div>
+            <div>
+              <label class='col-sm-2'>theTime:</label>
+              <label>{{ theTime }}</label>
+            </div>
+            <div class='form-group p-3'>                
+              <label for="textarea">Comment</label>
+              <textarea class="form-control rounded-0 noresize" id="textarea" rows="3"></textarea>
+            </div> 
+            <div class='form-group p-3'>
+              <button type="button" class="btn btn-default">Update</button>
+              <button type="button" class="btn btn-link">Place Holder</button>            
+            </div>
+        </div>          
+        <div class='col-sm-4 panel panel-default border'>
+          <div class='panel-body'>
+            <div class="row form-group">
+              {% if messages %}
+                <ul class="messages">
+                  {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>        
+        </div>        
+      </div>
+    </div>
+  </body>
+</html>

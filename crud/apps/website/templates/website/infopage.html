@@ -72,7 +72,7 @@
             <div class='panel-body p-3'>
                 <h3 class='row'>User Administration</h3>
               <div class='row form-group'>
-                <lable>Admin: {{ request.session.thisUser.name }}</label>              
+                <lable>Admin: {{ request.session.ownerName }}</label>              
               </div>
               <div class='row'>
                 <table class="table table-hover">
@@ -90,7 +90,7 @@
                     <!-- Admin sess all the rest users -->
                     {% for each in theRestUsers%} 
                     <tr>
-                      <td><a href='/user/{{request.session.userID}}/'>{{ each.id }}</a></td>
+                      <td><a href='/user/{{each.id}}/view/'>{{ each.id }}</a></td>
                       <td>{{ each.name }}</td>
                       <td>{{ each.email }}</td>
                       <td>{{ each.admin }}</td>
@@ -102,7 +102,7 @@
                 </table>                  
               </div>
               <div class='row'>
-                <button type="button" class="btn btn-link"><a href='/user/add/'>Add User</a></button>            
+                <button type="button" class="btn btn-link"><a href='/user/add'>Add User</a></button>            
               </div>
             </div>                   
           </div>
