@@ -85,13 +85,13 @@ def login(request):
     u=User.objects.get(email=request.POST['email'])
     request.session['userID']=u.id
     request.session['ownerName']=u.name
-
     print 'Session established for user [{}]'.format(request.session['userID'])
     return redirect('/user/{}/'.format(request.session['userID']))
 
 def logout(request):
   print '\n',"*"*10,' def logout\n'
   request.session.flush()
+  del request.session
   return redirect('/')
 
 def info(request, userID):
