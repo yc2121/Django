@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>Exercise</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="jquery-sample.css" />
+  <script>
+    "use strict";
+    // **** jQuery *****
+    $(function(){
+      console.log('document ready for jQuery')
+      var test = $('button');
+      test.click(function(){
+        $('p').addClass( "selected" );
+      })
+/*
+      box.mouseover(function(){
+        box.css({'background-color':'blue','color':'#333'});        
+      });
+      box.mouseout(function(){
+        box.css({'background-color':'#333','color':'blue'});
+      });
+*/
+/*
+      $('body').css('background','silver');
+
+      $('h1').mouseenter(
+        function(){ $(this).css('visibility','hidden'); }
+      )
+      $('h1').mouseleave(
+        function(){ $(this).css('visibility','visible'); }
+      )
+      $('h2').mouseenter(
+        function(){ $(this).hide(); }
+      )
+      $('h2').mouseleave(
+        function(){ $(this).show(); }
+      )
+      $('h3').mouseenter(
+        function(){ $(this).fadeOut(); }
+      )
+      $('h3').mouseleave(
+        function(){ $(this).fadeIn(); }
+      )
+*/
+      // $("h1").toggleClass("newclass");
+
+      // var msg="Document ready for jQuery!";
+      // console.log (msg);
+
+      // // $(f).mouseover(function(){
+      // //   $(this).hide();
+      // // });
+      // var f='#mouseover';
+      // var exp='$(this).alert("WOW")';
+      // $(f).mouseover(
+      //   function(){ $(this).css('visibility', 'hidden' ); }
+
+      //  ,function(){ $(this).css('visibility', 'visible'); }
+        // ,function(){ $(this).css('Background-color','Red'); }
+
+    // // Function name to invoke
+    // var fnName = "alert";
+
+    // // Params to pass to the function
+    // var params = msg;
+
+    // // Call function using Window object
+    // window[fnName](params);
+
+    });
+
+  </script>
+</head>
+<body>
+<div class='box'>
+  <div id='topbanner'>
+    <h3>jQuery Methos Demo Tool</h3>
+    <input type="search" value='http://localhost/jquery.html'>
+  </div>
+  <div id='left'>
+    <div class='sbys'>
+      <div class='boxes'>
+        <h3>AddClass</h3>
+        <input type="button" value="AddClass">
+        <p>Click the button to add class 'red' to the paragraph</p>
+      </div>
+      <div class='boxes'>
+        <h3>Slidetoggle</h3>
+        <input type="button" value="Slidetoggle">
+        <p>Click the button to slidetoggle a hidden image</p>
+      </div>
+      <div id=b3 class='boxes'>
+        <h3>Append</h3>
+        <input type="button" value="Append">
+        <p>Click the button to add append a new paragraph</p>
+      </div>   
+    </div>
+  </div>
+</div>
+</body>
+</html>

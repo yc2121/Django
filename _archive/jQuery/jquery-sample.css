@@ -1,0 +1,71 @@
+* {
+	margin:  0px;
+	padding: 0px;
+    /* overflow: auto; */
+    box-sizing: border-box;
+    color: black;
+	/* border: 1px solid black; */
+}
+.box, #topbanner, .sbys, input {
+    border: 2px solid black;    
+}
+.box {
+    width: 600px;
+    height: 440px;
+    background-color: silver;
+    margin: auto;
+    /* text-align: center; */
+    font-size: 20px;
+}
+#topbanner {
+    height: 80px;
+}
+h2, h3 {
+    text-align: center;
+}
+button, p {
+    display: inline-block;
+    margin: 10px 20px;
+}
+.sbys {
+    background-color: white;
+    padding: 10px 20px;
+    height: 320px;
+    color: darkslategray;
+    /* border-bottom: 4px solid black; */
+}
+.boxes {
+    height: 100px;
+    margin: 5px 0px 0px;
+    padding: 0px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid black;
+    display: inline-block;
+}
+#b3 {
+    border-bottom: 0px solid black;    
+}
+#left, #mid, #right {
+    display: inline;
+}
+.sbys {
+    width: 100%;
+}
+.sbys input {
+    padding: 5px;
+    margin: 0px 0px 5px;
+    width: 100px;
+}
+#topbanner input {
+    float: right;
+    margin: 10px 10px;
+    padding: 5px;
+}
+.selected {
+    color: blue;
+}
+.highlight {
+    background: yellow;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NewItem</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'website/css/bootstrap-custom.css' %}" media="screen" title="no title"  charset="utf-8">
+    <script href="{% static 'website/js/jquery-3.3.1.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script href="{% static 'website/js/popper.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script href="{% static 'website/js/bootstrap.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <link rel="icon" type='image/png' href="{% static 'website/img/favicon.png' %}">
+  </head>
+  <body>
+    <div class='container'>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!-- <a class="navbar-brand" href="#">WebSiteName</a> -->
+          </div>
+          <ul class="nav navbar">
+            <li class="col-sm-2 active"><a href='/dashboard/'>Home</a></li>
+            <li><a class='col-sm-2' href='/logout/'>Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+      <h3>Create a New Wish List Item</h3>
+      <div class='row'>
+        <form class='col-sm-8' action='/wishlist_items/new/' method='post'>
+          {% csrf_token %}
+          <div class='form-group row'>
+            <label class='col-sm-2'>Item/Product</label>
+            <input class='col-sm-4' type='textbox' name='item' placeholder='iPhone x' class='form-control'>
+          </div>
+          <button type='submit' name='additem'>Add</button>
+        </form>
+        <div class='col-sm-4'>
+          {% if messages %}
+          <ul class="messages text-danger">
+            {% for message in messages %}
+              <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %} 
+          {% endif %}
+        </div>        
+      </div>
+    </div>
+  </body>
+</html>

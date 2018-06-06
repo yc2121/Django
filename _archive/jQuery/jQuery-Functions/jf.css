@@ -1,0 +1,39 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+}
+body {
+  width: 800px;
+  /* background-color: brown; */
+}
+#banner {
+  background-color: #333;
+  color: whitesmoke;
+}
+#left {
+  /* background-color: silver; */
+  width: 15%;
+  padding: 5px 0px;
+  display: inline-block;
+}
+#left input {
+  margin: 0px;
+  width: 100px;
+  display: inline-block;
+  font-size: 14px;
+}
+#displayarea {
+  border: 1px solid black;
+  display: inline-block;
+  width: 84%;
+  height: 370px;
+  vertical-align: top;
+  border-top: none;
+  border-bottom: none;
+}
+#displayarea h1 {
+  display: inline-block;
+}

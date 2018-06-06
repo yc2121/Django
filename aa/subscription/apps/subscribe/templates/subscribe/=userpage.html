@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Appointment</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="{% static 'subscribe/css/bootstrap.min.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'subscribe/css/bootstrap-custom.css' %}" media="screen" title="no title"  charset="utf-8">
+    <script href="{% static 'subscribe/js/jquery-3.3.1.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script href="{% static 'subscribe/js/popper.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script href="{% static 'subscribe/js/bootstrap.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <link rel="icon" type='image/png' href="{% static 'subscribe/img/favicon.png' %}">
+  </head>
+  <body>
+    <div class='container'>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!-- <a class="navbar-brand" href="#">WebSiteName</a> -->
+            <a class="navbar-brand" href="#"></a>
+          </div>
+          <ul class="nav navbar">
+            <li class="col-sm-2 active"><a href="#">Home</a></li>
+            <li><a class='col-sm-2' href="#">Something</a></li>
+            <li><a class='col-sm-2' href="/logout/">Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class='table-responsive'>
+      <h3>Welcome, {{name}}</h3>
+      <!-- <table class='table table-striped'> -->
+      <table class='table table-hover'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Available</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in packages %}
+          <tr>
+            <td>{{p.name}}</td>
+            <td>{{p.cost}}</td>
+            <td>{{p.available}}</td>
+            <td>
+              <a class='col-sm-2' href='#'>Add</a>
+              <a class='col-sm-2' href='#'>Edit</a></td>
+          </tr>
+          {% endfor %}       
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </body>
+</html>

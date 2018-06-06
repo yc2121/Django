@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reg/Login</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="{% static 'subscribe/css/bootstrap.min.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'subscribe/css/bootstrap-custom.css' %}" media="screen" title="no title"  charset="utf-8">
+    <script href="{% static 'subscribe/js/jquery-3.3.1.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script href="{% static 'subscribe/js/popper.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <script href="{% static 'subscribe/js/bootstrap.min.js' %}" media="screen" title="no title"  charset="utf-8"></script>
+    <link rel="icon" type='image/png' href="{% static 'subscribe/img/favicon.png' %}">
+  </head>
+  <body>
+    <!-- <p>Your Gold: <input type='textbox' name='yourgold' value='{{request.session.yourgold}}'></p> -->
+    <div class='container'>
+      <div class='mt40 row'>
+        <div class='col-sm-4'>
+          <h3>Registration</h3>
+          <form action="/register/" method="post">
+            {% csrf_token %}
+            <div class='form-group row'>
+              <label class='col-sm-4'>Name:</label> 
+              <input class='col-sm-8' type='textbox' class="form-control" name='name' placeholder='username' class='form-control'>
+            </div>
+            <div class='form-group row'>
+              <label class='col-sm-4'>email:</label>
+              <input class='col-sm-8' type='textbox' name='email' placeholder='abc@def.com' class='form-control'>
+            </div>
+            <div class='form-group row'>
+              <label class='col-sm-4'>Password:</label>
+              <input class='col-sm-8' type='password' name='password' class='form-control'>
+            </div>
+            <p>Password at least 8 characters</p>
+            <div class='form-group row'>
+              <label class='col-sm-4'>Confirmtoin:</label> 
+              <input class='col-sm-8' type='password' name='confirmation' class='form-control'>
+            </div>
+            <!-- <div class='form-group row'>
+              <label class='col-sm-4'>DOB:</label>
+              <input class='col-sm-8'type='date' name='dob' class='form-control'>
+            </div> -->
+            <button type='submit' name='click' value='register' class="btn btn-outline-primary">Register</button>
+          </form>
+        </div>
+        <div class='col-sm-4' class="form-group">
+          {% if messages %}
+          <ul class="messages text-danger">
+            {% for message in messages %}
+              <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        <div class='col-sm-4'>
+          <h3>Login</h3>
+          <form action="/login/" method="post">
+            {% csrf_token %}
+            <div class='form-group row'>
+              <label class='col-sm-4'>Email:</label> 
+              <input class='col-sm-8' type='textbox' name='email' placeholder='abc@def.com' class='form-control'>
+            </div>
+            <div class='form-group row'>
+              <label class='col-sm-4'>Password:</label> 
+              <input class='col-sm-8' type='password' name='password' class='form-control'>
+            </div>
+            <button type='submit' name='click' value='login' class="btn btn-outline-primary">Login</button>
+          </form>   
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

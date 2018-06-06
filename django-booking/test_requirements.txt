@@ -1,7 +1,0 @@
-coverage
-django-coverage
-ipdb
-flake8
-fabric3
-mixer
-tox
